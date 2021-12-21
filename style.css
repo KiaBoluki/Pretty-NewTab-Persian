@@ -8,11 +8,13 @@
 
 body{
   height: 100vh;
+  background-image: url('https://picsum.photos/1920/1080');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  backdrop-filter: blur(5px);
+  /*backdrop-filter: blur(5px);*/
+  
 }
 
 .main-image {
@@ -47,12 +49,12 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50%;
-  width: 50%;
+  height: 100%;
+  width: 100%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0%;
+  left: 0%;
+  /* transform: translate(-50%, -50%); */
   padding: 1.5rem;
   background-color: rgba(0, 0, 0, .25);
   /*text-shadow: 1px 1px 1px rgb(29, 29, 29), -1px -1px 1px rgb(29, 29, 29);*/

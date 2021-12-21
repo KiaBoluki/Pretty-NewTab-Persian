@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Persian Date Pretty New Tab Page",
+  "version": "1.0",
+  "description": "This extension will show you the date in Persian in the new tab page.\r\n If you are in Iran you need to have a vpn to get the images",
+  "author": "Kia Boluki",
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "action":{
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "128": "icon128.png"
+  }
+}
