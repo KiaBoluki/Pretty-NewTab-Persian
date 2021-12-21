@@ -1,0 +1,76 @@
+*{
+  padding: 0;
+  margin: 0; 
+  box-sizing: border-box;
+  color: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body{
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  backdrop-filter: blur(5px);
+}
+
+.main-image {
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pixabay-logo{
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  font-size: 1.5rem;
+  color: #f2f2f2;
+  cursor: pointer;
+  width: 1.5rem;
+}
+
+.pixabay-logo a img{
+  width: 100%;
+}
+
+
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, .25);
+  /*text-shadow: 1px 1px 1px rgb(29, 29, 29), -1px -1px 1px rgb(29, 29, 29);*/
+}
+
+.content h3{
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+
+}
+
+.content p{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+p#persian-date{
+  font-family: 'Noto Sans Arabic', sans-serif;
+}
