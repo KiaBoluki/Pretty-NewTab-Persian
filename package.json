@@ -1,0 +1,19 @@
+{
+  "name": "pretty-newtab-persian",
+  "version": "1.0.0",
+  "description": "This is a Chrome Extension that shows Persian Date on new tab page.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiaBoluki/Pretty-NewTab-Persian.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KiaBoluki/Pretty-NewTab-Persian/issues"
+  },
+  "homepage": "https://github.com/KiaBoluki/Pretty-NewTab-Persian#readme"
+}
