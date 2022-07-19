@@ -8,20 +8,39 @@
   <title>KiaBoluki</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@500;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@500;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <div class="main-image">
-    <div class="content">
-      <h3 id="part-of-day">Good Morning</h3>
-      <p id="gregorian-date">date</p>
-      <p id="time">time</p>
-      <p id="persian-date">persian date</p>
+  <div class="container mx-auto h-screen flex items-center justify-center">
+    <div class="p-3 rounded-3xl text-xl text-center bg-[rgba(0,0,0,0.5)]">
+      <h3 id="part-of-day" class="p-2 font-bold text-5xl"></h3>
+      <div id="gregorian" class="p-2 text-3xl"></div>
+      <div id="persian">
+        <div class="p-2 mb-2">
+          <p class="p-1 mb-1 ">مسقط</p>
+          <p id="muscat">
+            <span id="date"></span>
+            <span id="time"></span>
+          </p>
+        </div>
+        <div class="p-2 mb-2">
+          <p class="p-1 mb-1 text-yellow-600">تهران</p>
+          <p id="tehran">
+            <span id="date"></span>
+            <span id="time"></span>
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
-  
+
   <!-- <div class="pixabay-logo">
     <a href="#">
       <img src="https://pixabay.com/static/img/logo_square.svg" alt="pixabay-free-images">

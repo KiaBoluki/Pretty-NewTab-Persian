@@ -1,60 +1,32 @@
 
 
 const body = document.querySelector('body');
-// const pixabayLogo = document.querySelector('.pixabay-logo');
-// const mainImg = document.querySelector('.main-image');
-// const pixabayLink = document.querySelector('.pixabay-logo a');
-const lblGregorianDate = document.getElementById('gregorian-date');
-const lblPersianDate = document.getElementById('persian-date');
-const lblTime = document.getElementById('time');
+
+const lblGregorianDate = document.getElementById('gregorian');
+const lblMuscatDate = document.querySelector("#muscat #date");
+const lblMuscatTime = document.querySelector("#muscat #time");
+const lblTehranDate = document.querySelector("#tehran #date");
+const lblTehranTime = document.querySelector("#tehran #time");
 const lblPartOfDay = document.getElementById('part-of-day');
 
-// const apiURL = new URL('https://pixabay.com/api?key=23746636-55ee33f792fb23acfe5b7eff5');
 
-// const params = {
-//   q: '',
-//   image_type: 'photo',
-//   orientation: 'horizontal',
-//   category: 'backgrounds',
-//   min_width: 1080,
-//   colors: "blue,green,red,yellow,orange,purple,pink,brown,grey,black",
-//   editors_choice: true,
-//   safesearch: true,
-//   order: 'popular',
-// }
+const getTehranTime = async (timezone = "Asia/Tehran") => {
+  const response = await fetch(`https://worldtimeapi.org/api/timezone/${timezone}`)
 
-// apiURL.search = new URLSearchParams(params).toString();
+  const data = await response.json();
+  const splittedDatetime = data.datetime.split('T');
+  const tehranDate = splittedDatetime[0];
+  const tehranTime = splittedDatetime[1].split('.')[0];
+  return `${tehranDate} ${tehranTime}`;
 
-// fetch(apiURL, {
-//   method: 'GET',
-//   headers: {
-//     'Content-Type': 'application/json',
-//     "allow-control-allow-origin": "*",
-//   }
-// })
-//   .then(response => {
-// return response.json();
+}
 
-//   })
-//   .then(data => {
-//     if ( data.hits != null && data.hits.length > 0) {
-     
-//       const randomIndex = Math.floor(Math.random() * data.hits.length);
-//       const randomImage = data.hits[randomIndex];
-      
-//       const imgUrl = randomImage.largeImageURL;
-//       const imgPixabayURL = randomImage.pageURL;
-  
-//       body.style.backgroundImage = `url(${imgUrl})`;
-//       mainImg.style.backgroundImage = `url(${imgUrl})`;
-      
-//       pixabayLink.href = imgPixabayURL;
-//     }
-//   })
-//   .catch(error => console.log(error));
 
-const getDateTime = (locale = 'default' ) => {
-  const today = new Date();
+
+const getDateTime = (locale = 'default', today = new Date()) => {
+
+  // console.log(today.toLocaleDateString('fa-IR', { weekday: 'long' }));
+  // return;
   const weekDay = today.toLocaleDateString(locale, { weekday: 'long' });
   const month = today.toLocaleDateString(locale, { month: 'long' });
   const day = today.toLocaleDateString(locale, { day: 'numeric' });
@@ -63,7 +35,7 @@ const getDateTime = (locale = 'default' ) => {
   const Hour = today.getHours();
   const Minutes = today.getMinutes();
   const Seconds = today.getSeconds();
-  
+
   return {
     weekDay,
     month,
@@ -88,23 +60,60 @@ const getPartOfDay = (hour) => {
   }
 }
 
+displayGregorianDate();
+displayTehranTime();
+displayMuscatTime();
+
+
 setInterval(() => {
-    
+  displayGregorianDate();
+  displayMuscatTime();
+  displayTehranTime();
+}, 30000);
+
+function displayTehranTime() {
+  getTehranTime().then(result => {
+    // console.log(result); return;
+    const freshTehranTime = getDateTime("fa-IR", new Date(result));
+ 
+
+    /**
+     *
+     * Tehran Time
+     */
+    lblTehranTime.textContent = `
+    ${(freshTehranTime.Hour < 10) ? '0' + freshTehranTime.Hour : freshTehranTime.Hour}:${(freshTehranTime.Minutes < 10) ? '0' + freshTehranTime.Minutes : freshTehranTime.Minutes}`;
+
+    lblTehranDate.textContent = `
+    ${freshTehranTime.weekDay},
+    ${freshTehranTime.day}
+    ${freshTehranTime.month}
+    ${freshTehranTime.year} `;
+  });
+}
+
+function displayGregorianDate() {
+  const freshTime = getDateTime();
   lblGregorianDate.textContent = `
-  ${getDateTime().weekDay}, 
-  ${getDateTime().month} 
-  ${getDateTime().day}, 
-  ${getDateTime().year} `;
-  
-  lblTime.textContent = `${( getDateTime().Hour < 10 ) ? '0' + getDateTime().Hour:getDateTime().Hour }:${( getDateTime().Minutes < 10 ) ? '0' + getDateTime().Minutes:getDateTime().Minutes }:${( getDateTime().Seconds < 10 ) ? '0' + getDateTime().Seconds:getDateTime().Seconds }`;
+  ${freshTime.weekDay}, 
+  ${freshTime.month} 
+  ${freshTime.day}, 
+  ${freshTime.year} `;
 
-  lblPersianDate.textContent = `
-  ${getDateTime('fa-IR').weekDay},
-  ${getDateTime('fa-IR').day}
-  ${getDateTime('fa-IR').month}
-  ${getDateTime('fa-IR').year} `;
+  lblMuscatTime.textContent = `
+  ${(freshTime.Hour < 10) ? '0' + freshTime.Hour : freshTime.Hour}:${(freshTime.Minutes < 10) ? '0' + freshTime.Minutes : freshTime.Minutes}`;
+
+  lblPartOfDay.textContent = `Good ${getPartOfDay(freshTime.Hour)}`;
+
+  return freshTime;
+}
 
 
-  lblPartOfDay.textContent = `Good ${getPartOfDay(getDateTime().Hour)}`;
-
-}, 1000);
+function displayMuscatTime() {
+  const muscatFreshTime = getDateTime('fa-IR', new Date());
+  lblMuscatDate.textContent = `
+  ${muscatFreshTime.weekDay},
+  ${muscatFreshTime.day}
+  ${muscatFreshTime.month}
+  ${muscatFreshTime.year} `;
+}
