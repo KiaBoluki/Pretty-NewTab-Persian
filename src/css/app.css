@@ -1,13 +1,13 @@
-*{
-  padding: 0;
-  margin: 0; 
-  box-sizing: border-box;
-  color: #ccc;
-  font-family: 'Noto Sans Arabic', sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  line-height: 1.3rem;
+@layer base {
+  html {
+    font-family: "Noto Sans Arabic", sans-serif;
+    color: white; 
+  }
 }
-
 body{
   height: 100vh;
   background-image: url('https://picsum.photos/1280/720');

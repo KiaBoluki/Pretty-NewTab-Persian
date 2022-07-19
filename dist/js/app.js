@@ -69,7 +69,7 @@ setInterval(() => {
   displayGregorianDate();
   displayMuscatTime();
   displayTehranTime();
-}, 30000);
+}, 1000);
 
 function displayTehranTime() {
   getTehranTime().then(result => {

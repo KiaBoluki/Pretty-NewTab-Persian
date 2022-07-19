@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/KiaBoluki/Pretty-NewTab-Persian/issues"
   },
-  "homepage": "https://github.com/KiaBoluki/Pretty-NewTab-Persian#readme"
+  "homepage": "https://github.com/KiaBoluki/Pretty-NewTab-Persian#readme",
+  "dependencies": {
+    "tailwindcss": "^3.1.6"
+  }
 }
